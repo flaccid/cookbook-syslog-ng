@@ -1,0 +1,93 @@
+{
+  "name": "cookbook-syslog-ng",
+  "description": "Installs/Configures syslog-ng",
+  "long_description": "Description\n===========\n\nThe Syslog NG cookbook installs and configures syslog-ng service.\nThe cookbook has been written for and tested on CentOS with syslog-ng 2.1.4.\nSyslog NG can be obtained [here: balabit.com](http://www.balabit.com/downloads/files?path=/syslog-ng/sources/2.1.4). \n\nRequirements\n============\n\n* Chef 0.8+\n* Syslog-NG 2.x package\n\nUsage\n=====\n\n### In a run list:\n    \"run_list\": [\n        \"recipe[syslog-ng]\"\n    ]\n\n### In a cookbook:\n    include_recipe \"syslog-ng\"\n    \n    syslog_ng_app application[:name] do\n      index \"02\"\n      host \"127.0.0.1\"\n      port \"514\"\n      log_base \"/var/applogs\"\n    end\n\n\nLicense and Author\n==================\n\nAuthor:: Artem Veremey (<artem@veremey.net>)\n\nCopyright 2012, Artem Veremey\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n\nChanges\n=======\n\n### v 1.0.0\n\n* Initial public release\n",
+  "maintainer": "Artem Veremey",
+  "maintainer_email": "artem@veremey.net",
+  "license": "Apache 2.0",
+  "platforms": {
+    "debian": ">= 0.0.0",
+    "ubuntu": ">= 0.0.0",
+    "centos": ">= 0.0.0",
+    "redhat": ">= 0.0.0",
+    "fedora": ">= 0.0.0"
+  },
+  "dependencies": {
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+    "syslog-ng/user": {
+      "display_name": "syslog-ng System User",
+      "description": "The syslog-ng system user.",
+      "default": "root",
+      "choice": [
+        "root",
+        "syslog-ng"
+      ],
+      "recipes": [
+        "syslog-ng::default"
+      ],
+      "calculated": false,
+      "type": "string",
+      "required": "optional"
+    },
+    "syslog-ng/group": {
+      "display_name": "syslog-ng System Group",
+      "description": "The syslog-ng system group.",
+      "default": "root",
+      "choice": [
+        "root",
+        "syslog-ng"
+      ],
+      "recipes": [
+        "syslog-ng::default"
+      ],
+      "calculated": false,
+      "type": "string",
+      "required": "optional"
+    },
+    "syslog-ng/log_dir": {
+      "display_name": "syslog-ng Log Directory",
+      "description": "The syslog-ng log directory.",
+      "default": "/var/log/syslog-ng",
+      "recipes": [
+        "syslog-ng::default"
+      ],
+      "choice": [
+
+      ],
+      "calculated": false,
+      "type": "string",
+      "required": "optional"
+    },
+    "syslog-ng/config_dir": {
+      "display_name": "syslog-ng Config Directory",
+      "description": "The syslog-ng configuration directory.",
+      "default": "/var/log/syslog-ng",
+      "recipes": [
+        "syslog-ng::default"
+      ],
+      "choice": [
+
+      ],
+      "calculated": false,
+      "type": "string",
+      "required": "optional"
+    }
+  },
+  "groupings": {
+  },
+  "recipes": {
+    "syslog-ng": "Installs and configures syslog-ng."
+  },
+  "version": "1.0.0"
+}
