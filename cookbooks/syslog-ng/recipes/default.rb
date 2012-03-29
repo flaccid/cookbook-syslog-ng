@@ -1,8 +1,7 @@
-#
 # Cookbook Name:: syslog-ng
 # Recipe:: default
 #
-# Copyright 2011,2012 Artem Veremey
+# Copyright 2012 Chris Fordham <chris.fordham@rightscale.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,49 +16,5 @@
 # limitations under the License.
 #
 
-package "syslog-ng"
-
-cookbook_file "#{node[:syslog_ng][:config_dir]}/syslog-ng.conf" do
-  owner node[:syslog_ng][:user]
-  group node[:syslog_ng][:group]
-  mode 00640
-end
-
-cookbook_file "/etc/init.d/syslog-ng" do
-  owner node[:syslog_ng][:user]
-  group node[:syslog_ng][:group]
-  mode 00755
-end
-
-directory "#{node[:syslog_ng][:config_dir]}/conf.d" do
-  owner node[:syslog_ng][:user]
-  group node[:syslog_ng][:group]
-  mode 00750
-  action :create
-end
-
-cookbook_file "#{node[:syslog_ng][:config_dir]}/conf.d/00base" do
-  owner node[:syslog_ng][:user]
-  group node[:syslog_ng][:group]
-  mode 00640
-end
-
-directory "#{node[:syslog_ng][:log_dir]}" do
-  owner node[:syslog_ng][:user]
-  group node[:syslog_ng][:group]
-  mode 00755
-  action :create
-end
-
-service "syslog" do
-  action [ :disable, :stop ]
-end
-
-service "rsyslog" do
-  action [ :disable, :stop ]
-end
-
-service "syslog-ng" do
-  supports :restart => true, :status => true
-  action [ :enable, :start ]
-end
+include_recipe "syslog-ng::install"
+include_recipe "syslog-ng::configure"
