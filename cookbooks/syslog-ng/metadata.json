@@ -79,6 +79,8 @@
   "recommendations": {
   },
   "recipes": {
+    "syslog-ng::configure": "Configures syslog-ng.",
+    "syslog-ng::install": "Installs syslog-ng.",
     "syslog-ng": "Installs and configures syslog-ng."
   },
   "groupings": {

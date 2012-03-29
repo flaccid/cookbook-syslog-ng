@@ -10,6 +10,8 @@ version          "1.0.0"
 end
 
 recipe "syslog-ng", "Installs and configures syslog-ng."
+recipe "syslog-ng::install", "Installs syslog-ng."
+recipe "syslog-ng::configure", "Configures syslog-ng."
 
 attribute "syslog-ng/user",
   :display_name => "syslog-ng System User",
