@@ -28,11 +28,11 @@ attribute "syslog-ng/group",
 attribute "syslog-ng/log_dir",
   :display_name => "syslog-ng Log Directory",
   :description => "The syslog-ng log directory.",
-  :default => "/var/log/syslog-ng",
+  :default => "/var/log",
   :recipes => [ "syslog-ng::default" ]
   
 attribute "syslog-ng/config_dir",
   :display_name => "syslog-ng Config Directory",
   :description => "The syslog-ng configuration directory.",
-  :default => "/var/log/syslog-ng",
+  :default => "/etc/syslog-ng",
   :recipes => [ "syslog-ng::default" ]
